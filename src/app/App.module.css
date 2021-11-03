@@ -11,16 +11,6 @@ img {
   object-fit: cover;
 }
 
-.title {
-  text-transform: uppercase;
-}
-
-span {
-  color: #ff4500;
-  text-transform: lowercase;
-  font-size: 20px;
-}
-
 .form {
   display: grid;
   row-gap: 0.5rem;

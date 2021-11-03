@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
+import Title from './components/Title';
 
 function App(): JSX.Element {
   return (
@@ -9,13 +10,11 @@ function App(): JSX.Element {
         alt="Bergfest"
       />
       <div className={styles.welcome}>
-        <h1 className={styles.title}>
-          Bergfest <span>by Neue Fische</span>
-        </h1>
+        <Title></Title>
         <form className={styles.form}>
           <input type="text" placeholder="Firstname" />
           <input type="text" placeholder="Lastname" />
-          <input type="button" value="Login" />
+          <input type="button" value="Add +" />
         </form>
       </div>
     </main>
