@@ -1,23 +1,12 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 .container {
   display: grid;
   grid-template-columns: 50% 50%;
   place-items: center;
-  background-color: #ffefd5;
-}
-
-input[type='button'] {
-  font-weight: bold;
-  color: #000;
-  background-color: transparent;
-  text-align: center;
-  border: none;
-}
-
-input[type='button']:hover {
-  cursor: pointer;
-  background-color: orange;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
-  transition: all 500ms ease-in-out;
-  transform: scale(1.2);
+  background-color: black;
 }

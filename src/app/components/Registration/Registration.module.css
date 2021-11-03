@@ -1,4 +1,22 @@
 .form {
   display: grid;
   row-gap: 0.5rem;
+  color: orange;
+}
+
+input[type='button'] {
+  font-weight: bold;
+  color: orange;
+  background-color: transparent;
+  text-align: center;
+  border: none;
+}
+
+input[type='button']:hover {
+  color: black;
+  cursor: pointer;
+  background-color: orange;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
+  transition: all 400ms ease-in-out;
+  transform: scale(1);
 }
