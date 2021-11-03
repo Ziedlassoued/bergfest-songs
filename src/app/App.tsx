@@ -12,6 +12,24 @@ function App(): JSX.Element {
       <div className={styles.welcome}>
         <Title></Title>
         <form className={styles.form}>
+          <select>
+            <option>Select Member</option>
+            <option>Alice P.</option>
+            <option>Alice S.</option>
+            <option>Anke</option>
+            <option>David</option>
+            <option>Dennis</option>
+            <option>Fabian</option>
+            <option>Hendrik</option>
+            <option>Julian</option>
+            <option>Leonard</option>
+            <option>Manuel S.</option>
+            <option>Manuel F.</option>
+            <option>Marko</option>
+            <option>Riitta</option>
+            <option>Zied</option>
+          </select>
+          create new member
           <input type="text" placeholder="Firstname" />
           <input type="text" placeholder="Lastname" />
           <input type="button" value="Add +" />
