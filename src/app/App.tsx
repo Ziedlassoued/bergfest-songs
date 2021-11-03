@@ -10,7 +10,7 @@ function App(): JSX.Element {
         alt="Bergfest"
       />
       <div className={styles.welcome}>
-        <Title></Title>
+        <Title text="Bergfest" />
         <form className={styles.form}>
           <select>
             <option>Select Member</option>
