@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './Registration.module.css';
 
 function Registration(): JSX.Element {
-  const [firstName, setFirstname] = useState('');
-  console.log(firstName);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   return (
     <form className={styles.form}>
       <select>
@@ -28,10 +28,16 @@ function Registration(): JSX.Element {
         type="text"
         placeholder="Firstname"
         value={firstName}
-        onChange={(event) => setFirstname(event.target.value)}
+        onChange={(event) => setFirstName(event.target.value)}
       />
       Firstname: {firstName}
-      <input type="text" placeholder="Lastname" />
+      <input
+        type="text"
+        placeholder="Lastname"
+        value={lastName}
+        onChange={(event) => setLastName(event.target.value)}
+      />
+      Lastname: {lastName}
       <input type="button" value="Add +" />
     </form>
   );
