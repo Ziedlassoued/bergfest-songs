@@ -1,44 +1,48 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './Registration.module.css';
 
 function Registration(): JSX.Element {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    fetch('https://json-server.machens.dev/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+      }),
+    });
+  }
+
+  function handleFirstNameChange(event: ChangeEvent<HTMLInputElement>) {
+    setFirstName(event.target.value);
+  }
+
+  function handleLastNameChange(event: ChangeEvent<HTMLInputElement>) {
+    setLastName(event.target.value);
+  }
+
   return (
-    <form className={styles.form}>
-      <select>
-        <option>Select Member</option>
-        <option>Alice P.</option>
-        <option>Alice S.</option>
-        <option>Anke</option>
-        <option>David</option>
-        <option>Dennis</option>
-        <option>Fabian</option>
-        <option>Hendrik</option>
-        <option>Julian</option>
-        <option>Leonard</option>
-        <option>Manuel S.</option>
-        <option>Manuel F.</option>
-        <option>Marko</option>
-        <option>Riitta</option>
-        <option>Zied</option>
-      </select>
-      create new member
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Firstname"
         value={firstName}
-        onChange={(event) => setFirstName(event.target.value)}
+        onChange={handleFirstNameChange}
       />
-      Firstname: {firstName}
       <input
         type="text"
         placeholder="Lastname"
         value={lastName}
-        onChange={(event) => setLastName(event.target.value)}
+        onChange={handleLastNameChange}
       />
-      Lastname: {lastName}
-      <input type="button" value="Add +" />
+      <input type="submit" value="Add +" />
     </form>
   );
 }
