@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './Registration.module.css';
 
 type User = {
+  id: number;
   firstName: string;
   lastName: string;
 };
@@ -10,6 +11,13 @@ function Registration(): JSX.Element {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [users, setUsers] = useState<User[]>([]);
+  const [selectedUserName, setSelectedUserName] = useState<string | null>(null);
+
+  function handelChange(event: ChangeEvent<HTMLSelectElement>) {
+    setSelectedUserName(event.target.value);
+    alert('Hey ' + event.target.value);
+    console.log(selectedUserName);
+  }
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -41,14 +49,14 @@ function Registration(): JSX.Element {
   }
 
   const userOptions = users.map((user) => (
-    <option>
+    <option key={user.id}>
       {user.firstName} {user.lastName}
     </option>
   ));
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <select onClick={handleSelectClick}>
+      <select onClick={handleSelectClick} onChange={handelChange}>
         <option disabled>Select user</option>
         {userOptions}
       </select>
