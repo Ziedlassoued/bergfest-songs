@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './App.module.css';
 import Title from './components/Title';
-import SplashImage from './components/Splashimage/Splashimage';
+import SplashImage from './components/SplashImage/SplashImage';
+import Registration from './components/Registration/Registration';
+import { useState } from 'react';
 
 function App(): JSX.Element {
+  const [selectedUserName, setSelectedUserName] = useState<string | null>(null);
+  console.log(selectedUserName);
+
   return (
     <main className={styles.container}>
       <SplashImage
@@ -13,28 +18,12 @@ function App(): JSX.Element {
       <div className={styles.welcome}>
         <Title text="Bergfest" />
         <form className={styles.form}>
-          <select>
-            <option>Select Member</option>
-            <option>Alice P.</option>
-            <option>Alice S.</option>
-            <option>Anke</option>
-            <option>David</option>
-            <option>Dennis</option>
-            <option>Fabian</option>
-            <option>Hendrik</option>
-            <option>Julian</option>
-            <option>Leonard</option>
-            <option>Manuel S.</option>
-            <option>Manuel F.</option>
-            <option>Marko</option>
-            <option>Riitta</option>
-            <option>Zied</option>
-          </select>
-          create new member
-          <input type="text" placeholder="Firstname" />
-          <input type="text" placeholder="Lastname" />
-          <input type="button" value="Add +" />
+          <input type="text" placeholder="First name" />
+          <input type="text" placeholder="Last name" />
+          <input type="submit" value="Register" />
         </form>
+
+        <Registration onUserNameSelect={setSelectedUserName} />
       </div>
     </main>
   );
