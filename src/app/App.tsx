@@ -3,8 +3,12 @@ import styles from './App.module.css';
 import Title from './components/Title';
 import SplashImage from './components/SplashImage/SplashImage';
 import Registration from './components/Registration/Registration';
+import { useState } from 'react';
 
 function App(): JSX.Element {
+  const [selectedUserName, setSelectedUserName] = useState<string | null>(null);
+  console.log(selectedUserName);
+
   return (
     <main className={styles.container}>
       <SplashImage
@@ -13,7 +17,13 @@ function App(): JSX.Element {
       />
       <div className={styles.welcome}>
         <Title text="Bergfest" />
-        <Registration />
+        <form className={styles.form}>
+          <input type="text" placeholder="First name" />
+          <input type="text" placeholder="Last name" />
+          <input type="submit" value="Register" />
+        </form>
+
+        <Registration onUserNameSelect={setSelectedUserName} />
       </div>
     </main>
   );

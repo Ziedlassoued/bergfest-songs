@@ -6,18 +6,14 @@ type User = {
   firstName: string;
   lastName: string;
 };
+type RegistrationProps = {
+  onUserNameSelect: (userName: string) => void;
+};
 
-function Registration(): JSX.Element {
+function Registration({ onUserNameSelect }: RegistrationProps): JSX.Element {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [users, setUsers] = useState<User[]>([]);
-  const [selectedUserName, setSelectedUserName] = useState<string | null>(null);
-
-  function handelChange(event: ChangeEvent<HTMLSelectElement>) {
-    setSelectedUserName(event.target.value);
-    alert('Hey ' + event.target.value);
-    console.log(selectedUserName);
-  }
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -56,7 +52,10 @@ function Registration(): JSX.Element {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <select onClick={handleSelectClick} onChange={handelChange}>
+      <select
+        onClick={handleSelectClick}
+        onChange={(event) => onUserNameSelect(event.target.value)}
+      >
         <option disabled>Select user</option>
         {userOptions}
       </select>
