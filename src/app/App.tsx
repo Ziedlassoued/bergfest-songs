@@ -3,11 +3,15 @@ import styles from './App.module.css';
 import Title from './components/Title';
 import SplashImage from './components/SplashImage/SplashImage';
 import Registration from './components/Registration/Registration';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App(): JSX.Element {
   const [selectedUserName, setSelectedUserName] = useState<string | null>(null);
   console.log(selectedUserName);
+
+  useEffect(() => {
+    document.title = selectedUserName ? `Hi ${selectedUserName}` : 'Bergfest';
+  });
 
   return (
     <main className={styles.container}>
